@@ -25,6 +25,7 @@ public class TopicDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_topic_details);
 
         myDB = new DatabaseHelper(this);
@@ -43,7 +44,7 @@ public class TopicDetails extends AppCompatActivity {
         downvoteClick = Integer.parseInt(intent.getStringExtra("downvote"));
         idTopic = Integer.parseInt(intent.getStringExtra("idTopic"));
 
-        upvoteBtn.setText("Upvote "+ intent.getStringExtra("upvote"));
+        upvoteBtn.setText(""+ intent.getStringExtra("upvote"));
         upvoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +52,7 @@ public class TopicDetails extends AppCompatActivity {
             }
         });
 
-        downvoteBtn.setText("Downvote "+ intent.getStringExtra("downvote"));
+        downvoteBtn.setText(""+ intent.getStringExtra("downvote"));
         downvoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,7 @@ public class TopicDetails extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
 
-                downvoteBtn.setText("Downvote "+ String.valueOf(downvoteClick));
+                downvoteBtn.setText(""+ String.valueOf(downvoteClick));
                 myDB.open();
                 cursor = myDB.updateDownvote(downvoteClick, idTopic);
             }
@@ -77,7 +78,7 @@ public class TopicDetails extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
 
-                upvoteBtn.setText("Upvote "+ String.valueOf(upvoteClick));
+                upvoteBtn.setText(""+ String.valueOf(upvoteClick));
                 myDB.open();
                 cursor = myDB.updateUpvote(upvoteClick, idTopic);
             }

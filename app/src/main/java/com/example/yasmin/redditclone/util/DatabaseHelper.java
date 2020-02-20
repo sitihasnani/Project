@@ -124,7 +124,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor loadData(){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM topic_table", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY upvote DESC limit 20", null);
         if (cursor != null) {
             cursor.moveToFirst();
         }

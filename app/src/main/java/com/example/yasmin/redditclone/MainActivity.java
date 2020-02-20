@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements TopicAdapter.TopicListener {
 
     DatabaseHelper myDB;
-    RecyclerView recyclerView;
+    public RecyclerView recyclerView;
     ArrayList<TopicModel> arrayList = new ArrayList<TopicModel>();
     TopicAdapter topicAdapter;
     Cursor cursor;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements TopicAdapter.Topi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         myDB = new DatabaseHelper(this);
 
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements TopicAdapter.Topi
             }
         });
     }
+
+
 
     private void onLoadList(){
 
@@ -107,13 +110,10 @@ public class MainActivity extends AppCompatActivity implements TopicAdapter.Topi
     public void onResume(){
         super.onResume();
         Log.d("BACK", "HERE");
-
-        topicAdapter.notifyDataSetChanged();
+        arrayList.clear();
+        onLoadList();
+        topicAdapter.refresh(arrayList);
 
     }
 
-//    @Override
-//    public void on{ // implement this method in adpater or simply call here
-//        topicAdapter.notifiDataSetChanged();
-//    }
 }

@@ -56,4 +56,10 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicViewHolder> {
 
     }
 
+    public void refresh(List<TopicModel> items)
+    {
+        this.topicList = items;
+        notifyDataSetChanged();
+    }
+
 }

@@ -2,9 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginTop="8dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardBackgroundColor="@color/white_trans1"
 
     >
 
@@ -12,20 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp"
+        android:padding="10dp"
+
         >
 
         <TextView
             android:id="@+id/titleTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            android:text="Title"
+            android:paddingBottom="2dp"/>
 
         <TextView
             android:id="@+id/descriptionTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"/>
+            android:text="Description"
+            android:paddingBottom="15dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,24 +46,59 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"/>
 
-            <TextView
-                android:id="@+id/upvoteTxt"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="upvote"
-                android:textColor="@color/colorAccent" />
+                >
 
-            <TextView
-                android:id="@+id/downvoteTxt"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_upvote"
+                    android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/upvoteTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:padding="5dp"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="downvote"
-                android:textColor="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:layout_weight="1"/>
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_downvote"
+                    android:tint="@color/red"/>
+
+                <TextView
+                    android:id="@+id/downvoteTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/red"
+                    android:padding="5dp"/>
+
+            </LinearLayout>
+
+
+
 
 
         </LinearLayout>
